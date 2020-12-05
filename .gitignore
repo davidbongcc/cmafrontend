@@ -1,0 +1,8 @@
+dist/*
+node_modules/*
+.DS_Store
+chromedriver
+src/components/generated
+example.pdf
+junit.xml
+coverage

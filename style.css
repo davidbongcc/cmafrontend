@@ -1,0 +1,53 @@
+body {
+    margin: 0px; 
+    user-select: none;
+    font-family: arial, sans-serif;
+
+}
+
+body.modal-open {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.base-element-jp, .base-element-jp button {
+    font-family: 'Noto Sans JP', Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+th {
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+@media print {
+    @page {
+        size: 1024px 768px;
+        margin: 0px;
+    }
+}
+
+.react-grid-Cell__value > div {
+    position: absolute !important;
+    display: block !important;
+    transform: none !important;
+    top: 0px !important;
+    left: 0px !important;
+    height: 100% !important;
+    right: 0px !important;
+    overflow: hidden;
+}
+
+.react-grid-Cell__value > div > span {
+    position: absolute;
+    display: block;
+    top: 0px; left: 0px; height: 100%; width: 100%;
+    box-sizing: border-box;
+    padding: 5px 8px 5px 8px;
+}
+
+.react-pdf__Page__annotations {
+    display: none;
+}

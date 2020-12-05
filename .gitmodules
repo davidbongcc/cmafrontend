@@ -1,0 +1,3 @@
+[submodule "kit-ui"]
+	path = kit-ui
+	url = https://kpmgjp-prod-001@dev.azure.com/kpmgjp-prod-001/kpmgjp-webapp-stack/_git/react-components

@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "target": "es5",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "lib": ["es2018", "dom"],
+        "types": ["jest", "jest-environment-puppeteer"]
+    },
+    "include": [
+        "./src/**/*",
+        "./node_modules/kit-ui/src/**/*.ts",
+    ]
+}
