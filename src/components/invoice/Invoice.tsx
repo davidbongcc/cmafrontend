@@ -54,7 +54,7 @@ export default class Invoice extends React.Component {
                           </div>
                           <Table striped bordered hover>
 
-                                        <thead className='thead-dark'>
+                                        <thead className=''>
                                             <tr>
                                                 <th className='text-nowrap'>ID</th>
                                                 <th className='text-nowrap'>Title</th>

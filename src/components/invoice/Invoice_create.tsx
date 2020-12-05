@@ -9,6 +9,7 @@ import * as ReactDOM from 'react-dom';
 export default class InvoiceCreateForm extends React.Component {
     public state = {
         clients: [],
+        payees: [],
         error: false,
     };
 
@@ -16,6 +17,16 @@ export default class InvoiceCreateForm extends React.Component {
         axios.get('http://localhost:8000/api/client/').then((response) => {
             this.setState(
               {clients: response.data},
+              );
+
+        }).catch((error) => {
+            this.setState({error: true});
+        });
+
+
+        axios.get('http://localhost:8000/api/payee/').then((response) => {
+            this.setState(
+              {payees: response.data},
               );
 
         }).catch((error) => {
@@ -58,11 +69,9 @@ export default class InvoiceCreateForm extends React.Component {
                         <Form.Group controlId='invoice.payee'>
                             <Form.Label>Payee</Form.Label>
                             <Form.Control as='select'>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            {this.state.payees.map((payee) => (
+                                               <option  value={payee.Id} key={payee.Id}>{payee.name}</option>
+                                            ))}
                             </Form.Control>
                             <Form.Text className='text-muted'>
                             Please choose Payee.
