@@ -7,6 +7,21 @@ import * as ReactDOM from 'react-dom';
  * Create Invoice form
  */
 export default class InvoiceCreateForm extends React.Component {
+    public state = {
+        clients: [],
+        error: false,
+    };
+
+    public componentDidMount() {
+        axios.get('http://localhost:8000/api/client/').then((response) => {
+            this.setState(
+              {clients: response.data},
+              );
+
+        }).catch((error) => {
+            this.setState({error: true});
+        });
+    }
 
     public render() {
         return (<div>
@@ -32,11 +47,9 @@ export default class InvoiceCreateForm extends React.Component {
                         <Form.Group controlId='invoice.client'>
                             <Form.Label>Client</Form.Label>
                             <Form.Control as='select'>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            {this.state.clients.map((client) => (
+                                               <option value={client.Id} key={client.Id}>{client.name}</option>
+                                            ))}
                             </Form.Control>
                             <Form.Text className='text-muted'>
                             Please choose client.
