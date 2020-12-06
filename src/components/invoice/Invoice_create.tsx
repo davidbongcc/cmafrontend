@@ -22,6 +22,7 @@ export default class InvoiceCreateForm extends React.Component {
     constructor(props) {
         super(props);
         this.inputInvoiceName = React.createRef();
+        this.inputAmount = React.createRef();
     }
 
     /**
@@ -30,6 +31,7 @@ export default class InvoiceCreateForm extends React.Component {
     public onSubmit = () => {
         console.log('Hit me...!!');
         console.log(this.inputInvoiceName.current.value);
+        console.log(this.inputAmount.current.value);
     }
 
     public componentDidMount() {
