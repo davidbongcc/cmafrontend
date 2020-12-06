@@ -11,7 +11,26 @@ export default class InvoiceCreateForm extends React.Component {
         clients: [],
         payees: [],
         error: false,
+        isValidationError: false,
+        validationErrorMessage: String,
+        invoiceName: String,
     };
+
+    private inputInvoiceName: React.RefObject<any>;
+    private inputAmount: React.RefObject<any>;
+
+    constructor(props) {
+        super(props);
+        this.inputInvoiceName = React.createRef();
+    }
+
+    /**
+     * Submit function handle
+     */
+    public onSubmit = () => {
+        console.log('Hit me...!!');
+        console.log(this.inputInvoiceName.current.value);
+    }
 
     public componentDidMount() {
         axios.get('http://localhost:8000/api/client/').then((response) => {
@@ -21,8 +40,8 @@ export default class InvoiceCreateForm extends React.Component {
 
         }).catch((error) => {
             this.setState({error: true});
-        });
 
+        });
 
         axios.get('http://localhost:8000/api/payee/').then((response) => {
             this.setState(
@@ -43,14 +62,14 @@ export default class InvoiceCreateForm extends React.Component {
                     <Form>
                         <Form.Group controlId='invoice.name'>
                             <Form.Label>Invoice Name</Form.Label>
-                            <Form.Control type='text' placeholder='Invoice name' />
+                            <Form.Control type='text' placeholder='Invoice name' ref={this.inputInvoiceName} />
                             <Form.Text className='text-muted'>
                             Invoice Name
                             </Form.Text>
                         </Form.Group>
                         <Form.Group controlId='invoice.amount'>
                             <Form.Label>Amount</Form.Label>
-                            <Form.Control type='text' placeholder='Amount(¥)' />
+                            <Form.Control type='text' placeholder='Amount(¥)' ref={this.inputAmount} />
                             <Form.Text className='text-muted'>
                             Amount (¥)
                             </Form.Text>
@@ -103,7 +122,7 @@ export default class InvoiceCreateForm extends React.Component {
                             <Row>
                                 <Col></Col>
                                 <Col md={2}><Button variant='outline-primary' >cancel</Button></Col>
-                                <Col md={1}><Button variant='primary' >Submit</Button></Col>
+                                <Col md={1}><Button variant='primary'  onClick={this.onSubmit}>Submit</Button></Col>
                             </Row>
                         </Container>
                     </Col>
